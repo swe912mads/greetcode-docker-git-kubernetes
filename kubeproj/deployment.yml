@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: python-greetcode-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: python-greetcode
+
+  template:
+    metadata:
+      labels:
+        app: python-greetcode
+
+    spec:
+      containers:
+        - name: python-greetcode-container
+          image: swethamathiyalagan/python-greetcode:latest
+          ports:
+            - containerPort: 5000
